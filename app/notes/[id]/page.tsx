@@ -1,12 +1,10 @@
+import NoteDetailsClient from "./NoteDetails.client";
 import TanStackProvider from "@/components/TanStackProvider/TanStackProvider";
-import NotesClient from "./Notes.client";
 
-function App() {
+export default function NoteDetailsPage() {
   return (
     <TanStackProvider>
-      <NotesClient />
+      <NoteDetailsClient />
     </TanStackProvider>
   );
 }
-
-export default App;

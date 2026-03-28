@@ -12,11 +12,13 @@ type ModuleWithDefault<T> = { default: T };
 // Ми явно повідомляємо TS форму значення, щоб зберегти правильні типи пропсів
 // (ReactPaginateProps) і мати коректну перевірку/підказки в IDE.
 
+// Webpack/Next may resolve default import to the component directly; CJS uses .default.
 const ReactPaginate = (
-  ReactPaginateModule as unknown as ModuleWithDefault<
+  (ReactPaginateModule as unknown as ModuleWithDefault<
     ComponentType<ReactPaginateProps>
-  >
-).default;
+  >).default ??
+  (ReactPaginateModule as unknown as ComponentType<ReactPaginateProps>)
+);
 
 interface PaginationProps {
   totalPages: number;

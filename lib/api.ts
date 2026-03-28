@@ -83,8 +83,28 @@ async function deleteNote(noteId: string): Promise<Note> {
   }
 }
 
-export default {
+interface FetchNoteByIdParams {
+  id: string;
+}
+
+async function fetchNoteById(params: FetchNoteByIdParams): Promise<Note> {
+  const { id } = params;
+  const response: AxiosResponse<Note> = await axios.get(
+    `${NOTEHUB_BASE_URL}/notes/${id}`,
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    },
+  );
+  return response.data;
+}
+
+const noteService = {
   fetchNotes,
   createNote,
   deleteNote,
+  fetchNoteById,
 };
+
+export default noteService;

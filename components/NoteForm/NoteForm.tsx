@@ -1,3 +1,4 @@
+"use client";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as yup from "yup";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
@@ -19,7 +20,7 @@ interface NoteFormProps {
   onCancel: () => void;
 }
 
-function NoteForm({ onCancel }: NoteFormProps) {
+const NoteForm = ({ onCancel }: NoteFormProps) => {
   const queryClient = useQueryClient();
   const mutation = useMutation({
     mutationFn: noteService.createNote,
@@ -97,6 +98,6 @@ function NoteForm({ onCancel }: NoteFormProps) {
       )}
     </Formik>
   );
-}
+};
 
 export default NoteForm;
