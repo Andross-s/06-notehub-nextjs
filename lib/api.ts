@@ -14,13 +14,13 @@ interface FetchNotesResponse {
 }
 
 const NOTEHUB_BASE_URL = "https://notehub-public.goit.study/api";
-const token = process.env.NEXT_PUBLIC_NOTEHUB_TOKEN;
 
 async function fetchNotes({
   page = 1,
   perPage = 12,
   search = "",
 }: FetchNotesParams = {}): Promise<FetchNotesResponse> {
+  const token = process.env.NEXT_PUBLIC_NOTEHUB_TOKEN;
   const params: { page: number; perPage: number; search?: string } = {
     page,
     perPage,
@@ -50,6 +50,7 @@ interface CreateNoteParams {
 
 async function createNote(note: CreateNoteParams): Promise<Note> {
   try {
+    const token = process.env.NEXT_PUBLIC_NOTEHUB_TOKEN;
     const response: AxiosResponse<Note> = await axios.post(
       `${NOTEHUB_BASE_URL}/notes`,
       note,
@@ -68,6 +69,7 @@ async function createNote(note: CreateNoteParams): Promise<Note> {
 
 async function deleteNote(noteId: string): Promise<Note> {
   try {
+    const token = process.env.NEXT_PUBLIC_NOTEHUB_TOKEN;
     const response: AxiosResponse<Note> = await axios.delete(
       `${NOTEHUB_BASE_URL}/notes/${noteId}`,
       {
@@ -89,6 +91,7 @@ interface FetchNoteByIdParams {
 
 async function fetchNoteById(params: FetchNoteByIdParams): Promise<Note> {
   const { id } = params;
+  const token = process.env.NEXT_PUBLIC_NOTEHUB_TOKEN;
   const response: AxiosResponse<Note> = await axios.get(
     `${NOTEHUB_BASE_URL}/notes/${id}`,
     {
