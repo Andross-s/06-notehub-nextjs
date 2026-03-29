@@ -1,9 +1,17 @@
 "use client";
 
-// error, !note
-
-const Error = () => {
-  return <p>Something went wrong.</p>;
+type NotesErrorProps = {
+  error: Error;
+  reset: () => void;
+  unstable_retry: () => void;
 };
 
-export default Error;
+const NotesError = ({ error }: NotesErrorProps) => {
+  return (
+    <p role="alert">
+      Something went wrong. {error.message}
+    </p>
+  );
+};
+
+export default NotesError;
