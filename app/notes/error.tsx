@@ -1,3 +1,5 @@
+"use client";
+
 // error, !note
 
 const Error = () => {
