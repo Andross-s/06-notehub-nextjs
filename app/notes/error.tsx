@@ -1,11 +1,7 @@
-"use client";
+// error, !note
 
-type ErrorProps = {
-  error: Error;
-};
-
-const Error = ({ error }: ErrorProps) => {
-  return <p>Could not fetch note details. {error.message}</p>;
+const Error = () => {
+  return <p>Something went wrong.</p>;
 };
 
 export default Error;
